@@ -62,3 +62,72 @@
         - faster when compared to system calls.
         - runs entirely in user space
         eg: printf(),malloc(),fopen(),strlen()
+
+
+2. Processor_speed:
+    - The speed at which a processor can execute instructions.
+    - processor(CPU) ->chef , instruction per second ->chef's cooking speed , dishes -> operations , recipe -> instructions
+    - simple task -> less time, complex task -> more executing time
+    - efficient code -> CPU Will Benefits
+
+    HANDS-ON:
+    - Write a C program that performs a large number of simple arithmetic operations (e.g., addition, multiplication) in a loop.
+        step 1:
+            # nano processor_speed.C //a terminal based editor will open
+        step 2:
+        PROGRAM:
+            #include <stdio.h>
+            int main(){
+                long long int i,result=0;
+                for(i=0;i<1000000;i++){
+                    result+=i*3;
+                }
+                printf("result : %lld\n",result);
+                return 0;
+            }
+        step 3:
+        # gcc processor_speed.c -o processor_speed //executable file
+
+    - Use the time command to measure the execution time of your program.
+        # time ./processor_speed //shows output
+
+    - Modify the program to perform more complex operations or increase the loop iterations.
+        # nano processor_speed.C
+
+    Modified PROGRAM:
+
+        for(i=0;i<200000000;i++){
+            result+=(i*2)/3 + (i%7);
+        }
+
+            # gcc processor_speed.c -o processor_speed
+            # time ./processor_speed // shows output with more executing time
+
+    - Measure the new execution time and discuss how the processor's speed affects the overall performance.
+        - if I increase the complexity of the operation it results in longer execution time.
+        - Optimizing the code can increase the performance of the CPU.
+        - The Processor gets benefited from efficient code.
+
+
+    - Extension: Research and explain CPU clock cycles, and how that relates to instructions per second.
+        CLOCK CYCLES:
+        - It is the smallest unit of time in the CPU.
+        - It is like a heartbeat that tells the CPU when to do something.
+        - CPU performs action sync with the Clock cycle.
+        - It is measured in Hertz(Hz) or cycles per second.
+
+        INSTRUCTIONS PER SECOND:
+        - Instructions per second (IPS) indicate how many instructions a CPU can execute in one second.
+        - A higher IPS means the CPU can process more commands in the same amount of time.
+
+                                       Clock speed
+        Instruction per second = -----------------------
+                                 cycles per Instruction
+
+        CPU runs at 2 GHz and each instruction it takes on average 2 cycles,then
+
+                                    2,000,000,000
+        Innstruction per second = ------------------ = 1,000,000,000
+                                          2
+
+        - It takes 1 billion Instruction per second.
