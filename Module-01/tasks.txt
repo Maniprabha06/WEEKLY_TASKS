@@ -131,3 +131,128 @@
                                           2
 
         - It takes 1 billion Instruction per second.
+
+
+3.Multi-Core Processors:
+    - multiple processes run parallely
+    - they can handle more tasks simultaneously. 
+    - improving overall performance and efficiency.
+
+    HANDS-ON:
+    - Write a Python program that performs a time-consuming task (e.g., calculating prime numbers) in a single thread.
+        # sudo apt update
+        # sudo apt install python3-pip
+        # nano prime_count.py
+        PROGRAM:
+        import time
+        def is_prime(n):
+            if n <= 1:
+                return False
+            for i in range(2, int(n**0.5) + 1):
+                if n % i == 0:
+                    return False
+            return True
+
+        def count_prime(limit):
+            count=0
+            for num in range(2, limit + 1):
+                if is_prime(num):
+                    count += 1
+            return count
+
+        start=time.time()
+        prime_count=count_prime(100000)
+        end=time.time()
+
+        print(f"Total primes : {prime_count}")
+        print(f"time taken by single thread: {end-start:.2f} seconds")
+
+        # python3 prime_count.py
+
+    - Modify the program to use the threading module to perform the task in multiple threads.
+        # nano prime_multithread.py
+
+        PROGRAM
+        import time
+        import threading
+
+        def is_prime(n):
+            if n<=1:
+                return False
+            for i in range(2,int(n**0.5)+1):
+                if n%i==0:
+                    return False
+            return True
+
+        def count_prime(start,end,result,index):
+            count=0;
+            for i in range(start,end):
+                if is_prime(i):
+                    count+=1
+            result[index]=count
+
+        start_time=time.time()
+        limit=100000
+        mid=limit//2
+        result=[0,0]
+
+        t1=threading.Thread(target=count_prime,args(2,mid,result,0))
+        t2=threading.Thread(target=count_prime,args(mid,limit,result,1))
+
+        t1.start()
+        t2.start()
+        t1.join()
+        t2.join()
+
+        total_prime=result[0]+result[1]
+        end_time=time.time()
+
+        print(f"Total_prime :{total_prime})
+        print(f"Time taken by multi thread : {end_time-start_time:.2f} seconds")
+        
+        # python3 prime_multithread.py
+
+    - Measure the execution time of both versions and compare the results.
+        - almost for my code it shows the same execution time but the multithreaded version is generally faster.
+    
+    - Discuss how multi-core processors can improve the performance of parallel tasks.
+        # nano prime_multicore.py
+
+        PROGRAM:
+        import time
+        import multiprocessing
+        def is_prime(n):
+            if n <= 1:
+                return False
+            for i in range(2, int(n**0.5) + 1):
+                if n % i == 0:
+                    return False
+            return True
+
+        def count_prime(start,end):
+            count=0
+            for num in range(start,end):
+                if is_prime(num):
+                    count += 1
+            return count
+
+        if __name__ :__main__:
+            start=time.time()
+            with multiprocessing.Pool(processes=2) as pool:
+            result = pool.starmap(count_prime, [(2, 50000), (50000, 100000)])
+            end=time.time()
+
+            total=sum(result)
+            print(f"Total prime: {total}")
+            print(f"Time taken by multi-core: {end - start:.2f} seconds")
+
+    - Extension: Use the python multiprocessing module, and compare the results of threading vs multiprocessing.
+        MULTICORE:
+            - By using multi core the timing is minimized for the same functions
+            - Instead of waiting for one function to finish, the work is divided among cores
+            - The total time can drop significantly, especially for heavy calculations
+
+
+        Single thread -> slow -> one task at a time
+        Multi thread -> same or slightly better -> In my case it shown the same time -> it has GIL Blocks
+        Multicore -> fastest -> true parallelism
