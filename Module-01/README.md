@@ -39,3 +39,12 @@ TASK-4
 ![Screenshot from 2025-04-24 18-58-23](https://github.com/user-attachments/assets/2dc737e6-8cbc-405a-93f0-8f4b178b9146)
 
 ![Screenshot from 2025-04-24 18-58-39](https://github.com/user-attachments/assets/82bba302-1d6c-4233-967c-cd8fcdf54911)
+
+![Screenshot from 2025-04-24 19-28-13](https://github.com/user-attachments/assets/ae308081-7202-4ee8-9071-bf1ec1d302ab)
+
+![Screenshot from 2025-04-24 19-25-12](https://github.com/user-attachments/assets/d857c7bf-c47a-44da-85af-9c5a815d019a)
+
+![Screenshot from 2025-04-24 19-25-40](https://github.com/user-attachments/assets/b2883d2f-5336-4119-946d-656544d02504)
+
+![Screenshot from 2025-04-24 19-26-28](https://github.com/user-attachments/assets/090b03a1-a72b-4f78-9b88-01329c06bf18)
+
