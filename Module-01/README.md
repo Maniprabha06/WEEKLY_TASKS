@@ -32,4 +32,10 @@ TASK-3
 
 ![Screenshot from 2025-04-23 14-28-00](https://github.com/user-attachments/assets/41634be5-b2d7-4a96-9463-86760f198300)
 
+TASK-4
 
+![Screenshot from 2025-04-24 18-58-09](https://github.com/user-attachments/assets/758e8d1e-87a9-4fef-aebb-2abc4951a11d)
+
+![Screenshot from 2025-04-24 18-58-23](https://github.com/user-attachments/assets/2dc737e6-8cbc-405a-93f0-8f4b178b9146)
+
+![Screenshot from 2025-04-24 18-58-39](https://github.com/user-attachments/assets/82bba302-1d6c-4233-967c-cd8fcdf54911)
