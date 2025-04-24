@@ -262,6 +262,7 @@
     - it has thousands of small cores
     - Great for parallel task whereas CPU is suitable for sequential tasks
     - Optimized for high throughput
+    - used for graphics-intensive application & machine learning
 
     - Install a simple GPU programming framework (e.g., CUDA or OpenCL).
         - I'm using Ubuntu in virtual box.
@@ -404,7 +405,7 @@
         - even for a 1024 x 1024 matrix the CPU outperformed the GPU.
         - Because i didn't used the physical GPU directly ..I have been using it through virtual box ubuntu setup.
         - When the system has access to real GPU ...The GPU will outperform the CPU.
-        
+
 
 
 
