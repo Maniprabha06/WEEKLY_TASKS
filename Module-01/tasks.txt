@@ -322,7 +322,18 @@
         print(" GPU Time: {:.6f} seconds".format(end_gpu - start_gpu))
 
     - Compare the execution time of the GPU version with a CPU version of the same program.
+        - I implemented vector addition and matrix multiplication using both CPU (pure Python/NumPy) and GPU (via OpenCL)
+        - When comparing execution time, I observed that the CPU version consistently outperformed the GPU version
+        - The reason behind this is...
+            - My GPU code runs inside a VirtualBox VM, which may not use the physical GPU directly, or may default to a CPU-based OpenCL device.
+            - The data transfer overhead and kernel launch time on GPU make it inefficient for small to medium workloads
+
     - Explain the advantages of using a GPU for parallel computations.
+        - While GPUs are faster for large-scale, highly parallel computations.
+        - they require significant setup overhead. 
+        - Without access to direct GPU hardware, the CPU version will usually be faster. 
+        - This experiment still helped me understand GPU programming, system architecture, and when to use each.
+
     - Extension: Implement a simple matrix multiplication on the GPU, and compare it's speed to the CPU.
         # nano vector_multi.py
         # python3 vector_multi.py
@@ -390,7 +401,10 @@
         else:
             print("\n CPU is faster by", gpu_time - cpu_time, "seconds (may be due to OpenCL using CPU device)")
 
-
+        - even for a 1024 x 1024 matrix the CPU outperformed the GPU.
+        - Because i didn't used the physical GPU directly ..I have been using it through virtual box ubuntu setup.
+        - When the system has access to real GPU ...The GPU will outperform the CPU.
+        
 
 
 
