@@ -416,6 +416,92 @@
         - managed by Operating system
         - each process has a thread,code,data.
     - a process is like a individual play performed on a stage.(A computer)
-    - 
+    
+    - Write a shell script that starts multiple instances of a long-running program (e.g., a loop that prints numbers).
+        # nano multi_instance.sh
+        PROGRAM : multi_instance.sh
+            bash count_limited.sh & pid1=$!
+            bash count_limited.sh & pid2=$!
+            bash count_limited.sh & pid3=$!
+
+            echo "Started processes with PIDs:"
+            echo "Process 1: $pid1"
+            echo "Process 2: $pid2"
+            echo "Process 3: $pid3"
+
+        # nano count_limited.sh
+        PROGRAM : count_limited.sh
+            for((i=1;i<=50;i++))
+            do
+                echo "PID $$ - Count $i"
+                sleep 1
+            done
+
+        # chmod +x count_limited.sh
+        # chmod +x multi_instance.sh
+        # ./multi_instance.sh
+
+    - Use the ps and top commands to observe the running processes and their resource usage.
+        # ps aux | grep count_limited.sh
+        # top
+
+        # watch "ps -ef | grep count_limited.sh | grep -v grep"  //to watch particular script in running state
+
+    - Explain how each instance of the program is a separate process with its own memory and resources.
+        - I ran a shell script multi_instance.sh,it launched a multiple process of count_limited.sh script at the same time.
+        - each process ran independently with separate process IDs.
+        - even though all the instance ran in the same code they have been treated as a separate process by OS.
+        - Verified this by using :
+            # ps -ef |  grep count_limited.sh
+            # top
+        - each process has:
+            its own memory
+            CPU usage
+            resource
+            execution timeline
+
+       - Here I observed that running the same program creates independent processes not a shared ones.
 
 
+    - Extension: Use the fork() system call in a C program to create child processes, and observe their behaviour.
+        # nano fork_demo.c 
+        PROGRAM : fork_demo.c 
+            # include <stdio.h>
+            # include <unistd.h>
+            int main(){
+                pid_t pid=fork();
+                if(pid==0){
+                    for(int i=0;i<5;i++){
+                        printf("Child (PID %d): %d\n",getpid(),i);
+                        sleep(1);
+                    }
+                }
+                else{
+                    for(int i=0;i<5;i++){
+                        printf("Parent (PID %d): %d\n",getpid(),i);
+                        sleep(1);
+                    }
+                }
+                return 0;
+            }
+
+        # gcc fork_demo.c -o fork_demo
+        # ./fork_demo
+        
+        # ps aux | grep fork_demo.c 
+        # top
+        # watch "ps -ef | grep fork_demo | grep -v -grep"
+
+        - I used fork() system call to create child process from the parent process
+        - fork() is a system call that creates a new process by duplicating the current process.
+        - when i call the fork() system call the OS does the below:
+            - duplicates the running program
+            - Now i have two separate process:
+                - original process -> parent
+                - newly created process -> child
+            - the two process run independentlyand simultaneously:
+                - in parent -> fork() return a child's PID : 1235
+                - in child -> fork() return a value 0
+            - if pid==0 -> enters child block else parent block
+            - each has a own space in memory.
+            
