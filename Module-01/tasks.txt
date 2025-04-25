@@ -504,4 +504,5 @@
                 - in child -> fork() return a value 0
             - if pid==0 -> enters child block else parent block
             - each has a own space in memory.
+            - each gets own copy of the program and runs independently.
             
