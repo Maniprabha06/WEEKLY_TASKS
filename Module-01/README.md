@@ -54,6 +54,12 @@ TASK-5
 
 ![Screenshot from 2025-04-25 21-59-33](https://github.com/user-attachments/assets/a7ae36fc-3fd8-46ec-9563-72c04d0a6c0c)
 
+![Screenshot from 2025-04-25 22-18-55](https://github.com/user-attachments/assets/fa09a56c-a54b-4fb8-9f4f-68a97b5108bb)
+
+![Screenshot from 2025-04-25 22-18-35](https://github.com/user-attachments/assets/b87abb85-7261-4f75-90a9-52a38ca77dab)
+
+![Screenshot from 2025-04-25 22-18-43](https://github.com/user-attachments/assets/45280d3f-c0e2-4de1-93d6-2224e75a9912)
+
 ![Screenshot from 2025-04-25 21-59-41](https://github.com/user-attachments/assets/94775eef-98aa-4e75-8f49-c159f3a2d92a)
 
 ![Screenshot from 2025-04-25 21-59-49](https://github.com/user-attachments/assets/6789cc61-0670-41eb-a005-13c253732dde)
@@ -64,11 +70,5 @@ TASK-5
 
 ![Screenshot from 2025-04-25 22-12-05](https://github.com/user-attachments/assets/5ba41060-e2a2-40c6-af97-baeb03253163)
 
-![Screenshot from 2025-04-25 22-18-55](https://github.com/user-attachments/assets/fa09a56c-a54b-4fb8-9f4f-68a97b5108bb)
 
-![Screenshot from 2025-04-25 22-18-35](https://github.com/user-attachments/assets/b87abb85-7261-4f75-90a9-52a38ca77dab)
-
-![Screenshot from 2025-04-25 22-18-43](https://github.com/user-attachments/assets/45280d3f-c0e2-4de1-93d6-2224e75a9912)
-
-![Screenshot from 2025-04-25 22-18-55](https://github.com/user-attachments/assets/fa09a56c-a54b-4fb8-9f4f-68a97b5108bb)
 
