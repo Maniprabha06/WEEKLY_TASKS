@@ -406,6 +406,16 @@
         - Because i didn't used the physical GPU directly ..I have been using it through virtual box ubuntu setup.
         - When the system has access to real GPU ...The GPU will outperform the CPU.
 
-
+5.Processes:
+    - A process is a running instance of a program
+    - if i run any command the system creates a process.
+    - instance -> running copy of something.
+    - Each process:
+        - has it own memory
+        - runs independently
+        - managed by Operating system
+        - each process has a thread,code,data.
+    - a process is like a individual play performed on a stage.(A computer)
+    - 
 
 
