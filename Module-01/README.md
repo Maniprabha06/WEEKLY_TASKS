@@ -70,7 +70,9 @@ TASK-6
 
 ![Screenshot from 2025-04-26 19-31-33](https://github.com/user-attachments/assets/a4a588fc-c83b-4c14-8342-4a85debaf424)
 
-![Screenshot from 2025-04-26 19-40-11](https://github.com/user-attachments/assets/e800f023-378a-49c5-a60b-ad8932f70970)
+![Screenshot from 2025-04-26 19-57-43](https://github.com/user-attachments/assets/ccc7db1d-4b60-4024-8462-2f400554a367)
+
+![Screenshot from 2025-04-26 19-57-59](https://github.com/user-attachments/assets/d1911d25-0811-4672-b878-8ff02ebdaf53)
 
 ![Screenshot from 2025-04-26 19-42-17](https://github.com/user-attachments/assets/aca44f19-e2f5-4d6c-b68e-a3f57d57c539)
 
