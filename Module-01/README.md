@@ -82,6 +82,11 @@ TASK-6
 
 ![Screenshot from 2025-04-26 19-55-47](https://github.com/user-attachments/assets/753f8120-cd93-422c-8971-8ebba62f9e9e)
 
+![Screenshot from 2025-04-26 20-08-13](https://github.com/user-attachments/assets/12053890-9545-416f-beec-919be8d5436d)
+
+![Screenshot from 2025-04-26 20-29-02](https://github.com/user-attachments/assets/64d81b19-5633-4077-826f-4a058609da97)
+
+![Screenshot from 2025-04-26 20-29-21](https://github.com/user-attachments/assets/abcef9ec-4f83-4e61-8ebd-e0fbcb77744e)
 
 
 
