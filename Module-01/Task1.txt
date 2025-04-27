@@ -19,7 +19,7 @@
     step 2:
         create a c file to write a program.
         I just created using nano command for terminal based text editor
-        # nano demo_program
+        # nano demo_program.c
     step 3:
     program that uses write() system call:
         #include <uinstd.h>
