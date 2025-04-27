@@ -1,0 +1,118 @@
+6.Memory Layout & Management:
+    - mameory layout is similar to a library with different sections.
+    - code stored in script section
+    - variables stored in props section
+    - dynamically allocated memory in flexible space.
+    - Understanding this helps while debugging tasks like segmentation fault and memory leaks.
+    - efficient memory management is crucial for performance.
+
+    Library:
+    - code/text section - shelves holding scripts
+    - Data section - shelves for global and static variables.
+    - Heap - a flexible open space where you can request memory at runtime(malloc())
+    - stack - shelves holding temporary variables created by functions.
+
+
+    DIAGRAM:
+
+                stack           -> local variable, function calls
+          -----------------
+                Heap            -> dynamic memory,malloc
+          -----------------
+            Initialized 
+                data
+          -----------------
+              READ_ONLY 
+                data
+          -----------------
+                Text            -> compile code 
+               Segment
+
+    - Write a C program that dynamically allocates memory using malloc() and forgets to free it (a memory leak).
+        # nano memory_leak.c 
+        PROGRAM : 
+        #include <stdio.h>
+        #include <stdlib.h>
+        #include <uinstd.h>
+        int main() {
+            int *ptr = (int*) malloc(5 * sizeof(int)); 
+            if (ptr == NULL) {
+                printf("Memory allocation failed!\n");
+                return 1;
+            }
+
+            for (int i = 0; i < 5; i++) {
+                ptr[i] = i * 10;
+            }
+
+            printf("Values stored: ");
+            for (int i = 0; i < 5; i++) {
+                printf("%d ", ptr[i]);
+            }
+            printf("\n");
+            printf("Sleeping for 30 seconds... check with pmap now!\n");
+            sleep(30); 
+            return 0;
+        }
+
+    - Use the valgrind tool to detect and analyze the memory leak.
+        # sudo apt update
+        # sudo apt install valgrind
+        # gcc -g memory_leak.c -o memory_leak
+        # valgrind ./memory_leak // it shows like definetely lost...memory leak...etc!!
+
+    - Modify the program to correctly free the allocated memory.
+        # nano leak_fixed.c 
+        PROGRAM :
+        #include <stdio.h>
+        #include <stdlib.h>
+        int main() {
+            int *ptr = (int*) malloc(5 * sizeof(int)); 
+            if (ptr == NULL) {
+                printf("Memory allocation failed!\n");
+                return 1;
+            }
+
+            for (int i = 0; i < 5; i++) {
+                ptr[i] = i * 10;
+            }
+
+            printf("Values stored: ");
+            for (int i = 0; i < 5; i++) {
+                printf("%d ", ptr[i]);
+            }
+            printf("\n");
+            free(ptr);
+            return 0;
+        }
+        
+        # gcc -g leak_fixed.c -o leak_fixed
+        # valgrind ./leak_fixed  // no memory leaks.
+
+    - Use pmap to view the memory map of a running process, and explain the different memory segments.
+        # ps aux | grep memory_leak 
+        // i will get a PID use this for pmap command
+        # pmap <pid>
+        It has:
+            - code segment - text
+            - Heap segment - malloc ,dynamic memory
+            - stack segment - function call memory
+            - libraries used - dependencies,std lib
+        
+    - Extension: Create a program that causes a segmentation fault by accessing memory out of bounds. Use gdb to debug the issue.
+
+        # nano segfault.c 
+        PROGRAM:
+        #include <stdio.h>
+        #include <stdlib.h>
+        int main(){
+            int *arr=NULL;
+            *arr=42;
+            return 0;
+        }
+        # gcc -g segfault.c -o segfault
+        # sudo apt update
+        # sudo apt install gdb
+        # gdb ./segfault
+        # run
+        # backtrace

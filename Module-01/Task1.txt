@@ -1,0 +1,64 @@
+1.Unix Internals :
+    Unix is a multiuser,multitasking OS designed for flexibility and adaptability
+    Originally developed in 1960s
+    Written in C programming language
+    
+    Imagine Kernal as a city with two distinct zones.
+    User space is a bustling downtown where applications operate (like web browser or text editor)
+    Kernal space is like a city control center,which is managed by city council called Kernal where it manages the traffic (I/O) and Security.
+    
+    When a application needs to access a file. it should  "request" the kernal (the system call)!!
+    The kernal then handles actual file access,ensuring security and resource management.
+
+    HANDS-ON:
+    - Write a simple C program that uses the write() system call to write a message to the standard output (stdout).
+    step 1:
+        for installing gcc to run c program...and strace for system call!
+        # sudo apt update
+        # sudo apt install gcc strace -y
+    step 2:
+        create a c file to write a program.
+        I just created using nano command for terminal based text editor
+        # nano demo_program
+    step 3:
+    program that uses write() system call:
+        #include <uinstd.h>
+        #include <string.h>
+        int main(){
+            const char *text="Pre-Onboard Learning Module-01\n";
+            write(1,text,strlen(text));  //1 for stdout ,can use 2 for stderr
+            return 0;
+        }
+    Saved the file.
+    step 4:
+    # gcc demp_program -o demo_program    //create a executable file
+    # ./demo_program  //it shows std output 
+
+    - Use the strace command to observe the system calls made by your program.
+    # strace ./demo_program  //to trace the system call
+
+    - Explain which parts of the program operate in user space and which parts involve the kernel space.
+        #include <uinstd.h>   //user space
+        #include <string.h>   //user space
+        int main(){           //user space
+            const char *text="Pre-Onboard Learning Module-01\n";  //user space
+            write(1,text,strlen(text));  // strlen(text)->user space write -> kernal space...starts with user space call that invokes kernal space
+            return 0; //user space
+        }
+
+    - Extension: Research and explain the difference between a system call and a library function.
+    System calls:
+        - It is a direct request made by a user program to a OS kernal
+        - user space can't directly access the hardware.. so it uses kernal to make request via a system calls
+        - It is used when user program needs acces for low level resources like files,memory,devies or processes.
+        - it can be traced using strace
+        - Direct OS interactions
+        eg: write(),read(),open(),fork(),exit(),execve()
+
+    library functions:
+        - it's a part of language's standard library
+        - convenient wrapper
+        - it is a helper function which may or may not internally use system calls
+        - faster when compared to system calls.
+        - runs entirely in user space
+        eg: printf(),malloc(),fopen(),strlen()

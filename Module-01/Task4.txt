@@ -1,0 +1,148 @@
+4.GPU & HOW IT WORKS:
+    - Specialized for parallel processing(graphics,math)
+    - it has thousands of small cores
+    - Great for parallel task whereas CPU is suitable for sequential tasks
+    - Optimized for high throughput
+    - used for graphics-intensive application & machine learning
+
+    - Install a simple GPU programming framework (e.g., CUDA or OpenCL).
+        - I'm using Ubuntu in virtual box.
+        - So I have installed OpenCL framework to try GPU code.
+        
+        # sudo apt update && sudo apt upgrade -y
+        # sudo apt install ocl-icd-opencl-dev clinfo pocl-opencl-icd -y
+        # clinfo  // to check if openCl is working
+        # sudo apt install python3-pip
+        # pip3 install pyopencl numpy
+
+    - Write a basic GPU program that performs a simple vector addition.
+        # nano vector_add.py
+        # python3 vector_add.py
+        PROGRAM:
+        import pyopencl as cl
+        import numpy as np
+        import time
+
+        N = 1000000  
+
+        A = np.random.rand(N).astype(np.float32)
+        B = np.random.rand(N).astype(np.float32)
+
+        start_cpu = time.time()
+        C_cpu = A + B
+        end_cpu = time.time()
+
+        platform = cl.get_platforms()[0]
+        device = platform.get_devices()[0]
+        ctx = cl.Context([device])
+        queue = cl.CommandQueue(ctx)
+
+        kernel_code = """
+        __kernel void vector_add(__global float* A, __global float* B, __global float* C) {
+            int i = get_global_id(0);
+            C[i] = A[i] + B[i];
+        }
+        """
+
+        program = cl.Program(ctx, kernel_code).build()
+
+        mf = cl.mem_flags
+        A_buf = cl.Buffer(ctx, mf.READ_ONLY | mf.COPY_HOST_PTR, hostbuf=A)
+        B_buf = cl.Buffer(ctx, mf.READ_ONLY | mf.COPY_HOST_PTR, hostbuf=B)
+        C_buf = cl.Buffer(ctx, mf.WRITE_ONLY, A.nbytes)
+
+        start_gpu = time.time()
+        program.vector_add(queue, A.shape, None, A_buf, B_buf, C_buf)
+        queue.finish()
+        end_gpu = time.time()
+
+        C_gpu = np.empty_like(A)
+        cl.enqueue_copy(queue, C_gpu, C_buf)
+
+        print(" Match?" , np.allclose(C_cpu, C_gpu, atol=1e-6))
+        print(" CPU Time: {:.6f} seconds".format(end_cpu - start_cpu))
+        print(" GPU Time: {:.6f} seconds".format(end_gpu - start_gpu))
+
+    - Compare the execution time of the GPU version with a CPU version of the same program.
+        - I implemented vector addition and matrix multiplication using both CPU (pure Python/NumPy) and GPU (via OpenCL)
+        - When comparing execution time, I observed that the CPU version consistently outperformed the GPU version
+        - The reason behind this is...
+            - My GPU code runs inside a VirtualBox VM, which may not use the physical GPU directly, or may default to a CPU-based OpenCL device.
+            - The data transfer overhead and kernel launch time on GPU make it inefficient for small to medium workloads
+
+    - Explain the advantages of using a GPU for parallel computations.
+        - While GPUs are faster for large-scale, highly parallel computations.
+        - they require significant setup overhead. 
+        - Without access to direct GPU hardware, the CPU version will usually be faster. 
+        - This experiment still helped me understand GPU programming, system architecture, and when to use each.
+
+    - Extension: Implement a simple matrix multiplication on the GPU, and compare it's speed to the CPU.
+        # nano vector_multi.py
+        # python3 vector_multi.py
+
+        PROGRAM:
+        import numpy as np
+        import pyopencl as cl
+        import time
+        N = 512
+
+        A = np.random.rand(N, N).astype(np.float32)
+        B = np.random.rand(N, N).astype(np.float32)
+        
+        start_cpu = time.time()
+        C_cpu = np.matmul(A, B)
+        end_cpu = time.time()
+        cpu_time = end_cpu - start_cpu
+        print("CPU Time:", cpu_time, "seconds")
+
+
+        ctx = cl.create_some_context()
+        queue = cl.CommandQueue(ctx)
+
+        C_gpu = np.zeros((N, N), dtype=np.float32)
+
+
+        mf = cl.mem_flags
+        A_buf = cl.Buffer(ctx, mf.READ_ONLY | mf.COPY_HOST_PTR, hostbuf=A)
+        B_buf = cl.Buffer(ctx, mf.READ_ONLY | mf.COPY_HOST_PTR, hostbuf=B)
+        C_buf = cl.Buffer(ctx, mf.WRITE_ONLY, C_gpu.nbytes)
+
+
+        kernel_code = """
+        __kernel void matmul(const int N,
+                            __global float* A,
+                            __global float* B,
+                            __global float* C) {
+            int row = get_global_id(0);
+            int col = get_global_id(1);
+            float result = 0.0f;
+
+            for (int k = 0; k < N; ++k) {
+                result += A[row * N + k] * B[k * N + col];
+            }
+            C[row * N + col] = result;
+        }
+        """
+
+
+        program = cl.Program(ctx, kernel_code).build()
+
+
+        start_gpu = time.time()
+        program.matmul(queue, (N, N), None, np.int32(N), A_buf, B_buf, C_buf)
+        cl.enqueue_copy(queue, C_gpu, C_buf)
+        queue.finish()
+        end_gpu = time.time()
+        gpu_time = end_gpu - start_gpu
+
+        print("GPU Time:", gpu_time, "seconds")
+
+
+        if gpu_time < cpu_time:
+            print("\n GPU is faster by", cpu_time - gpu_time, "seconds")
+        else:
+            print("\n CPU is faster by", gpu_time - cpu_time, "seconds (may be due to OpenCL using CPU device)")
+
+        - even for a 1024 x 1024 matrix the CPU outperformed the GPU.
+        - Because i didn't used the physical GPU directly ..I have been using it through virtual box ubuntu setup.
+        - When the system has access to real GPU ...The GPU will outperform the CPU.
