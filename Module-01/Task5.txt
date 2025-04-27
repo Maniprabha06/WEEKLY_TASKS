@@ -59,7 +59,7 @@
         # nano fork_demo.c 
         PROGRAM : fork_demo.c 
             # include <stdio.h>
-            # include <unistd.h>
+            # include <uinstd.h>
             int main(){
                 pid_t pid=fork();
                 if(pid==0){
