@@ -1,0 +1,36 @@
+Shell Scripting: Bash vs Csh
+    - Bash is a popular shell scripting language that is widely used in Linux and Unix systems.
+    - Bash and csh is like adding recipe(Set of Instructions) to a Operating system.
+    - We write a shell script to make a computer perform a task.
+
+
+    Bash:
+        - Bash is more powerful and modern & well organized scripting language than Csh.
+        - Easier to follow 
+        - Has better formatting
+        - Includes more advanced tools like functions,arrays,error handling.
+        - Suitable for complex tasks.
+        - It is widely used in modern systems.
+
+    Csh:
+        - Csh(C Shell) is an older,more traditional scripting language.
+        - Less powerful than bash.
+        - Less support to advanced features.
+        - Sometimes preferred for interactive shell use, like quick command line tasks.
+        - It is less used in modern systems.
+        - Interactive Commands & older style
+
+    Shell Scripting :
+        - Repetitive tasks(eg: backups,file renaming)
+        - Custom tools(eg: shortcut commands)
+        - System admin tasks(eg: monitoring,updates)
+
+    Choosing Bash vs Csh:
+    - Depends on :
+        - Complexity of script
+        - Working environment
+        - Our familiarity
+
+    Recollection Trigger:
+    - Need modern features like functions ,arrays etc -> use Bash.
+    - will use few interactive commands and in older style -> Use Csh.
