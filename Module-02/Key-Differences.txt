@@ -1,0 +1,27 @@
+Key-Differences:
+1.Variable Handling:
+Bash:
+    - Assignment : variable=value (No spaces)
+    - Access : $variable
+
+    bash
+    #!/bin/bash
+    name="Prabha"
+    echo "Heyyy, $name"
+
+    - Simple and consistent.
+    - No confusion with quoting and spacing.
+
+Csh:
+    - Assignment : set variable =  value
+    - Access : $variable
+    - If it is a single word no quotes needed ..if it is more than one it has to be quoted.
+
+    Csh
+    #!/bin/csh
+    set name = Prabha
+    echo "Heyyy, $name"
+
+    - Must use space around =.
+    - Strings with spaces must be quoted.
+    - Might be confusing.
