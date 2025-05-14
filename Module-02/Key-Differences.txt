@@ -25,3 +25,76 @@ Csh:
     - Must use space around =.
     - Strings with spaces must be quoted.
     - Might be confusing.
+
+
+2. Control Structures:
+Bash:
+    - uses cleaner and modern syntax.
+    - Easier to write complex logic.
+
+    control_bash.sh:
+    #!/bin/bash
+    for file in *; do
+        if [ -f "$file" ]; then
+            echo "$file is a file"
+        elif [ -d "$file" ]; then
+            echo "$file is a directory"
+        else
+            echo "$file is something else"
+        fi
+    done
+
+    - it has clear syntax and no confusions.
+    - even a space missing can leads to issue.
+
+Csh:
+    - Works well for basic control flow.
+    - Syntax is very rigid , which can be harder to maintain complex logics.
+
+    Control_csh.csh
+    #!/bin/csh
+    foreach file (*)
+        if (-f $file) then
+            echo "$file is a file"
+        else if (-d $file) then
+            echo "$file is a directory"
+        else 
+            echo "$file is something else"
+        endif
+    end
+
+    - older style
+    - can be confusing for complex logic.
+
+3.Array Handling:
+Bash:
+    - Supports array with a more robust syntax.
+    - Array can be easily created and accessed.
+
+    array_bash.sh
+    #!/bin/bash
+    places=("India" "London" "Russia" "Europe")
+    echo "Print all places ${places[@]}"
+    echo "Print first place ${places[0]}"
+    echo "Print second place ${places[1]}"
+    echo "print number of places : ${#places[@]}"
+
+    for place in "${places[@]}"; do
+        echo "place : $place"
+    done
+
+
+Csh :
+    - limited array support
+
+    array_csh.csh:
+    #!/bin/csh
+    set places = (India London Africa Europe Finland)
+    echo "print all places $places"
+    echo "print first place $places[1]"
+    echo "print second place $places[2]"
+    echo "print number of places : ${#places}"
+
+    foreach place ($places)
+        echo "place : $place"
+    end
