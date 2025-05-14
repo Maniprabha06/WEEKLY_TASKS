@@ -19,3 +19,12 @@ Bash vs Csh:
 ![Screenshot from 2025-05-14 19-26-25](https://github.com/user-attachments/assets/3f86282e-99d5-48c0-a3cf-2f301645731e)
 
 ![Screenshot from 2025-05-14 19-27-27](https://github.com/user-attachments/assets/02015fe7-7573-4b4a-8465-c4ee0f8c1222)
+
+3. Array Handling
+Bash vs Csh:
+
+![Screenshot from 2025-05-14 20-00-07](https://github.com/user-attachments/assets/d4b3efb8-96eb-4bb3-8e01-810d7b580c09)
+
+![Screenshot from 2025-05-14 20-07-05](https://github.com/user-attachments/assets/8654f00a-7d8c-4fea-a264-724adfa5252a)
+
+![Screenshot from 2025-05-14 20-07-33](https://github.com/user-attachments/assets/9af91eab-4aba-4a4b-85b5-4242d010407c)
