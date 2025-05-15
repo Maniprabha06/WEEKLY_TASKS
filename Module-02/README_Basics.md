@@ -35,3 +35,8 @@ Bash vs Csh:
 ![Screenshot from 2025-05-15 12-40-39](https://github.com/user-attachments/assets/49191747-ad4e-46e2-81f0-0b35b40467a3)
 
 ![Screenshot from 2025-05-15 12-39-53](https://github.com/user-attachments/assets/db12ff93-5a95-4ba7-a7f8-23e1f28cd08f)
+
+![Screenshot from 2025-05-15 12-58-13](https://github.com/user-attachments/assets/72feb3db-d76f-4dc9-8ed3-ec6c609c7ab4)
+
+![Screenshot from 2025-05-15 12-57-58](https://github.com/user-attachments/assets/756a293d-09a4-4098-834b-fdc0fb5633dd)
+
