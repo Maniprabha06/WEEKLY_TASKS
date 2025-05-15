@@ -135,6 +135,46 @@ Csh:
     set lines = `wc -l < "$filename"`
     echo "Number of lines in '$filename' is : $lines lines"
 
-    chmod +x feature_csh.csh
-    echo -e "Line1\nLine2\nLine3\nLine4\n" > example.txt
-    ./feature_csh.csh example.txt
+    - chmod +x feature_csh.csh
+    - echo -e "Line1\nLine2\nLine3\nLine4\n" > example.txt
+    - ./feature_csh.csh example.txt
+
+
+5. History and Interactive use:
+Bash:
+    - Bash is the default ubuntu shell
+    - History - with numbers,timestamps(with config).
+
+    echo "History and Interactive use in Bash"
+    ls //list the files and directory
+    pwd //path of working directory
+    whoami //shows which user
+    history // shows history
+    !! //runs previous command
+    !1 //runs first command in history
+    !-1 //runs last command in history
+    !n //runs nth command in history
+    alias prabha='ls -l' //alias name
+    prabha // list the files (runs ls -l command)
+    unalias prabha
+
+Csh:
+    - was historically used For interactive use of commands we can prefer Csh.
+    - History - with numbers(simple).
+    
+    in termianl type csh first it will show like %
+    csh
+    echo "History and Interactive use in Csh"
+    set history = 100
+    ls //list the files and directory
+    pwd //path of working directory
+    whoami //shows which user
+    history // shows history in a simple way
+    !! //runs previous command
+    !1 //runs first command in history
+    !-1 //runs last command in history
+    !n //runs nth command in history
+    alias prabha 'ls -l' //alias name
+    prabha // list the files (runs ls -l command)
+    unalias prabha
+    exit //moves to default shell bash
