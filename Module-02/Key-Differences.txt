@@ -98,3 +98,43 @@ Csh :
     foreach place ($places)
         echo "place : $place"
     end
+
+4. Scripting Features:
+Bash:
+    - Has more advanced features like functions, arrays and error handling etc.
+    - Supports more complex logic with if-else statements and loops.
+
+    nano feature_bash.sh
+    #!/bin/bash
+
+    count_lines()
+        if [ ! -f "$1" ]; then
+            echo "Error file '$1' not found!"
+            return 1
+        fi
+
+        lines=$(wc -l < "$1")
+        echo "Number of lines in '$1' is : $lines lines"
+
+    count_lines "$1"
+
+    chmod +x feature_bash.sh
+    echo -e "Line1\nLine2\nLine3\nLine4\n" > test.txt
+    ./feature_bash.sh test.txt
+
+Csh:
+    - Has limited features      
+    - Does not support functions, arrays and error handling etc.
+
+    nano feature_csh.csh
+    #!/bin/csh
+    set filename = "$1"
+    if (! -f "$filename") then
+        echo "Error : '$filename' not found"
+    endif
+    set lines = `wc -l < "$filename"`
+    echo "Number of lines in '$filename' is : $lines lines"
+
+    chmod +x feature_csh.csh
+    echo -e "Line1\nLine2\nLine3\nLine4\n" > example.txt
+    ./feature_csh.csh example.txt
