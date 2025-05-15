@@ -40,3 +40,19 @@ Bash vs Csh:
 
 ![Screenshot from 2025-05-15 12-57-58](https://github.com/user-attachments/assets/756a293d-09a4-4098-834b-fdc0fb5633dd)
 
+
+5.History and Interactive use
+Bash vs Csh:
+
+![Screenshot from 2025-05-15 15-30-38](https://github.com/user-attachments/assets/22580a6f-f9e8-4799-8a46-899c57b5753d)
+
+![Screenshot from 2025-05-15 15-30-52](https://github.com/user-attachments/assets/e47ea605-7675-4fcc-9785-5b0b965ccc12)
+
+![Screenshot from 2025-05-15 15-30-59](https://github.com/user-attachments/assets/75ba4fa2-7a99-489f-b7ec-0b417989c46e)
+
+![Screenshot from 2025-05-15 15-35-33](https://github.com/user-attachments/assets/141c096c-3e92-46f5-b29c-1b7430352fa5)
+
+![Screenshot from 2025-05-15 15-35-40](https://github.com/user-attachments/assets/23fa96ec-e090-4fb4-83fd-dc02eb2e3e78)
+
+![Screenshot from 2025-05-15 15-35-49](https://github.com/user-attachments/assets/e92e7711-cd53-499c-a604-4224641a95b7)
+
