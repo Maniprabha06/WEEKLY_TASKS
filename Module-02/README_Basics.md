@@ -28,3 +28,10 @@ Bash vs Csh:
 ![Screenshot from 2025-05-14 20-07-05](https://github.com/user-attachments/assets/8654f00a-7d8c-4fea-a264-724adfa5252a)
 
 ![Screenshot from 2025-05-14 20-07-33](https://github.com/user-attachments/assets/9af91eab-4aba-4a4b-85b5-4242d010407c)
+
+4.Scripting features
+Bash vs Csh:
+
+![Screenshot from 2025-05-15 12-40-39](https://github.com/user-attachments/assets/49191747-ad4e-46e2-81f0-0b35b40467a3)
+
+![Screenshot from 2025-05-15 12-39-53](https://github.com/user-attachments/assets/db12ff93-5a95-4ba7-a7f8-23e1f28cd08f)
