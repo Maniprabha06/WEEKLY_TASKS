@@ -1,0 +1,81 @@
+o	3. User Input and Conditional Logic: 
+	    - Write scripts in both Bash and Csh that prompt the user for input and perform different actions based on the input.
+            Bash:
+                - nano user_input_bash.sh
+                
+                Script:
+                #!/bin/bash
+                read -p "Enter your name : " name
+                if [ "$name" = "Prabha" ]; then
+                    echo "Welcome, Prabhaa"
+                elif [ "$name" = "Siddhu" ]; then
+                    echo "Welcome, Siddhu"
+                else
+                    echo "Welcome, $name"
+                fi
+
+                - chmod +x user_input_bash.sh
+                - ./user_input_bash.sh
+
+            Csh:
+                - nano user_input_csh.csh
+
+                Script:
+                #!/bin/csh
+                echo -n "Enter your name : "
+                set name = $<
+
+                if ("$name" == "Prabha") then
+                    echo "Welcome, prabhaaa"
+                else if ("$name" == "Mano") then
+                    echo "Welcome, Manooo"
+                else    
+                    echo "Welcome, $name"
+                endif
+
+                - chmod +x user_input_csh
+                - ./user_input_csh.csh
+
+	    - Compare the syntax and error handling of both scripts.
+            Bash:
+                - read -perform
+                - if[ "$a" = "$b" ]; then .... fi
+                - elif
+                - Built in with read -p
+
+            Csh:
+                - set var = $<
+                - if ("$var" == "value") then...endif
+                - else if
+                - needs echo -n before set var
+
+
+            Error Handling:
+            Bash:
+                if [ -z "$name" ]; then
+                    echo "You didn't enter anything"
+                    exit 1
+                fi
+
+            Csh:
+                if ("$name" == "") then
+                    echo "You didn't entered anything"
+                endif
+
+        
+For age 
+Bash:
+    ! [[ "$age" =~ ^[0-9]+$ ]]
+        -- invalid
+    ["$age" -lt 18 ]
+        -- under 18
+    else
+        -- 18 or above
+
+Csh: 
+    ("$age" != [0-9]*)
+        --invalid
+    ($age < 18)
+        --under 18
+    else
+        --18 or above

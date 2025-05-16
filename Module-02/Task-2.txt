@@ -1,0 +1,94 @@
+2. File Processing: 
+    - Write scripts in both Bash and Csh that loop through a directory of files and print their names.
+        Bash :
+            - nano listfiles_bash.sh
+
+            Script:
+            #!/bin/bash
+            for file in *; do
+                echo "File : $file"
+            done
+
+            - chmod +x listfiles_bash.sh
+            - ./listfiles_bash.sh
+
+        Csh :
+            - nano listfiles_csh.csh
+
+            Script:
+            #!/bin/csh
+            foreach file (*)
+                echo "File : $file"
+            end
+
+            - chmod +x listfiles_csh.csh
+            - ./listfiles_csh.csh
+
+    - Compare the syntax and efficiency of both scripts.
+        Bash:
+            - for file in *; do ... done.
+            - * - all non hidden files.
+            - clean , modern.
+            - more flexible
+                - can filter the file type.
+                - use find , stat, test commands
+                - extend into more complex workflows
+
+        Csh:
+            - foreach file (*) ... end.
+            - * - all non hidden files.
+            - slightly more verbose.
+            - less flexible
+            - can't filter the file type.
+            - can't use find, stat, test commands.
+
+        Efficiency:
+            - for simple listing - both are fast and similar
+            - for scalability and script extensions, Bash is better choice
+
+
+example for filters:
+Bash:
+1.find
+
+#!/bin/bash
+
+echo "Finding all .txt files in current directory and subdirectories:"
+find . -type f -name "*.txt"
+
+2.stat
+
+#!/bin/bash
+
+echo "Listing files with size and modification date and time :"
+for file in *; do
+    if [ -f "$file" ]; then
+        size=$(stat -c%s "$file")
+        mod_time=$(stat -c%y "$file")
+        echo "$file - $size bytes - Modified on $mod_time"
+    fi
+done
+
+3.test
+
+#!/bin/bash
+
+for file in *; do
+    if [ -f "$file" ]; then
+        echo "$file is a regular file"
+    elif [ -d "$file" ]; then
+        echo "$file is a directory"
+    else
+        echo "$file is something else"
+    fi
+done
+
+Csh:
+
+don't use stat and find
+#!/bin/csh
+
+foreach file (*.txt)
+    echo "File: $file"
+    ls -l $file
+end

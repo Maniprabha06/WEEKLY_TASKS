@@ -1,0 +1,37 @@
+1. Basic script :
+    - Write a simple script in both Bash and Csh that prints "Hello, World!" and the current date and time.
+        Bash :
+            - nano basic_bash.sh
+            
+            Script:
+                #!/bin/bash
+                echo "Hello, World"
+                echo "Current Date and Time : $(date)"
+
+            - chmod +x basic_bash.sh
+            - ./basic_bash.sh
+
+        Csh : 
+            - nano basic_csh.csh
+
+            Script:
+                #!/bin/csh
+                echo "Hello, World"
+                echo "Current Date and Time : `date`"
+
+            - chmod +x basic_csh.csh
+            - ./basic_csh.csh
+
+
+    - Compare the syntax and execution of both scripts.
+    Bash :
+        - #!/bin/bash
+        - echo "..."
+        - $() - modern syntax
+        - .sh -> script extension
+
+    Csh :
+        - #!/bin/csh
+        - echo "..."
+        - `...` - old syntax (bachticks)
+        - .csh -> script extension
