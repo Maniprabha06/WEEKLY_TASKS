@@ -1,0 +1,95 @@
+4. Complex Logic and Functions: 
+    - Write scripts in both bash and csh that define a function, accept parameters, and return a value. and Write a script that uses if/then/else, and case statements.
+        Bash:
+            - nano function_bash.csh
+
+            Script:
+            #!/bin/bash
+
+            check_number() {
+                num=$1
+
+                if ! [[ "$num" =~ ^[0-9]+$ ]]; then
+                    echo "Invalid input : not an number"
+                    return 1
+                fi
+
+                if [ $((num%2)) -eq 0 ]; then
+                    parity="even"
+                else
+                    parity="odd"
+                fi
+
+                case "$parity" in
+                    even)
+                        echo "$num is a even no"
+                        ;;
+                    odd)
+                        echo "$num is a odd no"
+                        ;;
+                    *)
+                        echo "Unknown result"
+                        ;;
+                esac
+            }
+
+            check_number "$1"
+
+            - chmod +x function_bash.sh
+            - ./function_bash.sh 10
+
+        Csh:
+            - nano function_csh.csh
+
+            Script:
+            #!/bin/csh
+
+            set num = $1
+            if ("$num" !~ [0-9]*) then
+                echo "Invalid input : Not an number"
+            endif
+
+            @ mod = num % 2
+            if ($mod == 0) then
+                set parity = "even"
+            else
+                set parity = "odd"
+            endif
+
+            switch ($parity)
+                case "even":
+                    echo "$num is even"
+                    breaksw
+                case "odd"
+                    echo "$num is odd"
+                    breaksw
+                default:
+                    echo "Unknown parity"
+                    breaksw
+                endsw
+
+            - chmod +x function_csh.csh
+            - ./function_csh.csh 10
+
+
+    - Compare the syntax and readability of both scripts.
+        Bash:
+            - check_number () {....}
+            - num=$1
+            - if ! [[ "$num" =~ ^[0-9]+$ ]]; then ...fi
+            - return 1
+            - if [ $((num%2)) -eq 0] then ... fi
+            - case "$parity" in even) . ;; odd) . ;; *) . ;; esac
+            - check_number "$1"
+            - supports full scripting logic: functions, arithmetic, return codes and case
+            - cleaner syntax , more readable
+        Csh:
+            - if ("$num" !~ [0-9]*) then... endif
+            - @ mod = num % 2 ... if ($mod ==0) then ... endif
+            - exit 1
+            - switch ($parity) ... case "even" ... breaksw ... case "odd" ... default: ...breaksw ..endsw
+            - function not supported
+            - set num = $1
+            - lacks modern features
+            - less readable
+
