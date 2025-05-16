@@ -16,3 +16,12 @@
 ![Screenshot from 2025-05-15 20-41-32](https://github.com/user-attachments/assets/59ebc709-74c9-44ba-bf55-4b6df0fe6b59)
 
 ![Screenshot from 2025-05-15 20-42-07](https://github.com/user-attachments/assets/a7865d3a-0fae-457f-8a0e-9aaa12f6ea29)
+
+3.User Input and Conditional Logic Bash vs Csh:
+
+![Screenshot from 2025-05-16 16-50-50](https://github.com/user-attachments/assets/6655d634-aa48-4703-ab4b-2b78f6e83483)
+
+![Screenshot from 2025-05-16 16-56-18](https://github.com/user-attachments/assets/49e7f1a9-65fc-43d8-aced-d19f79334379)
+
+![Screenshot from 2025-05-16 16-57-14](https://github.com/user-attachments/assets/4d872f4d-ea83-44db-8723-7598ef5d09c3)
+
