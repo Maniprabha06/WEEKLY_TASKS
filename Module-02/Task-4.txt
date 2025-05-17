@@ -8,7 +8,6 @@
 
             check_number() {
                 num=$1
-
                 if ! [[ "$num" =~ ^[0-9]+$ ]]; then
                     echo "Invalid input : not an number"
                     return 1
@@ -91,5 +90,5 @@
             - function not supported
             - set num = $1
             - lacks modern features
-            - less readable
+            - less readable  
 
