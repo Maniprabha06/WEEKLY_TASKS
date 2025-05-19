@@ -4,7 +4,7 @@ Bash:
     - Assignment : variable=value (No spaces)
     - Access : $variable
 
-    bash
+    bash:
     #!/bin/bash
     name="Prabha"
     echo "Heyyy, $name"
