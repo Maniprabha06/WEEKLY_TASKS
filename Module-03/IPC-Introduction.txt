@@ -1,0 +1,15 @@
+Inter process Communication - Unix :
+    - Process individual offices within a company.
+    - IPC mechanisms are various ways that offices communicate and share information.
+    - One way communication eg: Simple Memos -> Use pipes
+    - Shared access to the same data -> Shared bulletin boards.
+    - Phone system like a conversation (request & response) -> Sockets.
+
+
+One flow of data (one way)             - pipes
+Multiple programs reading/writing fast - Shared memory
+Sending structured messages            - Message Queue
+Keeping processes in sync              - Semaphores
+Networked programs (client-server)     - Sockets 
+
+
