@@ -1,0 +1,9 @@
+Pipes:
+    - simple Memos
+    - one way communication
+    - like passing a memo from one office to another.
+    - The sender writes the memo and the receiver reads it.
+
+    command :
+        - ls | grep "bash"
+        - ls (stdout) -> (pipe) -> grep (stdin).

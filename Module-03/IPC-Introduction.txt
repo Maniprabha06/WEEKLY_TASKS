@@ -13,3 +13,7 @@ Keeping processes in sync              - Semaphores
 Networked programs (client-server)     - Sockets 
 
 
+Choosing right IPC depends on:
+    - Type of data being used.
+    - Communication pattern.
+    - performance requirements.
