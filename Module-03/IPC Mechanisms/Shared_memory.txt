@@ -1,0 +1,52 @@
+Shared Memory:
+    - Acts like shared bulletin boards.
+    - Multiple processes can attach to a same memory segment and read/write to it.
+    - Shared memory is a block of memory that is shared among processes.
+    - It is fast because it avoids kernal user space copies(unlike pipe or sockets).
+    - It is not safe because it is not thread safe.
+
+    Shared Memory APIs:
+        - shmget() — create/get shared memory segment.
+        - shmat() — attach shared memory to it.
+        - shmdt() — detach shared memory from it.
+        - shmctl() — remove the segment (optional).
+
+    - nano writer_shm.c
+    writer_shm.c:
+        #include <stdio.h>
+        #include <sys/ipc.h>
+        #include <sys/shm.h>
+
+        int main() {
+            int shmid = shmget(1234,sizeof(int),0666 | IPC_CREAT);
+            // (key,size of one integer,read/write permission for user,group and others, Create if no segment with this key exits)
+            int *data = (int *)shmat(shmid,NULL,0);
+            //else *data=5;
+            // (store an integer,attach the shm with id specified,Null -> let the OS choose where to mapt the memory,no special flag for read/write permission).
+            (*data)++;
+            printf("writer value: %d\n",*data);
+            shmdt(data);
+            return 0;
+        }
+
+    - nano reader_shm.c
+    reader_shm.c:
+        #include <stdio.h>
+        #include <sys/ipc.h>
+        #include <sys/shm.h>
+
+        int main() {
+            int shmid = shmget(1234,sizeof(int),0666);
+            // (key,size of one integer,read/write permission for user,group and others).
+            int *data=(int *)shmat(shmid,NULL,0);
+            // (store an integer,attach the shm with specified id,Null -> let the OS choose where to map the memory,no special flag read/write permission).
+            printf("reader value: %d\n",*data);
+            shmdt(data);
+            shmctl(shmid,IPC_RMID,NULL);
+            return 0;
+        }
+
+    - gcc writer_shm.c -o writer_shm
+    - gcc reader_shm.c -o reader_shm
+    - ./writer_shm
+    - ./reader_shm
