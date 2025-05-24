@@ -15,3 +15,12 @@
 
 ![Screenshot from 2025-05-24 12-00-25](https://github.com/user-attachments/assets/8e40172d-9444-4410-95ec-1e949427a95d)
 
+3.SHARED MEMORY:
+
+![Screenshot from 2025-05-24 18-01-49](https://github.com/user-attachments/assets/df10dd14-df56-4e50-b7ac-20f78e86ebe1)
+
+![Screenshot from 2025-05-24 18-05-51](https://github.com/user-attachments/assets/0dd070be-6c97-424b-b879-e9e6b8779fe9)
+
+![Screenshot from 2025-05-24 18-12-00](https://github.com/user-attachments/assets/99ccfeb3-5732-4437-91ab-6544231ed52c)
+
+
