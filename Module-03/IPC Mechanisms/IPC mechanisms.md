@@ -31,5 +31,14 @@
 
 ![Screenshot from 2025-05-25 11-49-27](https://github.com/user-attachments/assets/82fd5c67-915f-460f-9c3c-40c01ae51aa0)
 
+5. SEMAPHORES:
+
+![Screenshot from 2025-05-25 15-49-38](https://github.com/user-attachments/assets/f59533f8-a05f-4e55-8823-6cd08433c11a)
+
+![Screenshot from 2025-05-25 15-49-46](https://github.com/user-attachments/assets/792d572e-697c-43fb-817e-c5ed80e39272)
+
+![Screenshot from 2025-05-25 15-50-12](https://github.com/user-attachments/assets/b9f56e4e-28cf-49e4-90cd-3394d265a172)
+
+
 
 
