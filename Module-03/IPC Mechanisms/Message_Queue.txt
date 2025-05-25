@@ -1,0 +1,48 @@
+Message Queue:
+    - Structured Message
+    - Message can be tagged with a type (like categories).
+    - processes can send message of a certain type.
+    - other processes can receive message of the type they are interested.
+
+    - nano sender_msg.c
+    sender_msg.c:
+        #include <stdio.h>
+        #include <sys/ipc.h>
+        #include <syd/msg.h>
+
+        struct msg {
+            long type;
+            char text[50];
+        };
+
+        int main(){
+            int msgid=msgget(1234,0666 | IPC_CREAT);
+            struct msg m={1,"Helloo Manoo!!"};
+            msgsnd(msgid,&m,sizeof(m.text),0);
+            printf("Sender message : %s\n",m.text);
+            return 0;
+        }
+
+        - nano receiver_msg.c
+        receiver_msg.c:
+            #include <stdio.h>
+            #include <sys/ipc.h>
+            #include <sys/msg.h>
+
+            struct msg {
+                long type;
+                char text[50];
+            };
+
+            int main() {
+                int msgid=msgget(1234,0666);
+                struct msg m;
+                msgrcv(msgid,&m,sizeof(m.text),1,0);
+                printf("Receiver message : %s\n",m.text);
+                msgctl(msgid,IPC_RMID,NULL);
+                return 0;
+            }
+        - gcc sender_msg.c -o sender_msg
+        - gcc receiver_msg.c -o receiver_msg
+        - ./sender_msg
+        - ./receiver_msg

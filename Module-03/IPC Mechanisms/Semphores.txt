@@ -1,0 +1,130 @@
+Semaphore :
+    - Semaphore is a integer variable used to control access to a shared resources at the same time on a multi process environment.
+    - It is used to synchronize threads.
+    - Why do we need it?
+        to avoid race conditions - when two or more processes try to read/write the same resource at the same time and produce incorrect results.
+        to avoid deadlocks - when two or more processes are blocked indefinitely, each waiting for the other to complete its execution or access the same resource.
+
+    - types :
+        - Binary Semaphore: It is a semaphore with a value of 1 indicating that only one process can access the same resource at the same time.
+        - Counting Semaphore: It is a semaphore with a value greater than 1 indicating that more than one process can access the resources at the same time.
+
+    - Two operations:
+        wait() or P(Proberen) operation:
+            - decrement the semaphore by 1.
+            - locked...resource are in use.
+            - try to take control of resource.
+        signal() or V(Verhogen) operation:
+            - increment the semaphore by 1.
+            - resource is available.
+            - Release the resource.
+            - If any process was waiting → one of them is unblocked.
+
+    Fork():
+        - System call used to create a new process(child process).
+        - The child process is a copy of the parent process.
+
+        pid > 0 ->parent
+        pid ==0 -> child
+        pid < 0 ->fork failed
+
+    - nano semaphore.c
+    
+    semaphore.c:
+        #include <stdio.h>
+        #include <stdlib.h>
+        #include <unistd.h>
+        #include <sys/ipc.h>
+        #include <sys/sem.h>
+        #include <sys/types.h>
+
+        void sem_wait(int semid){
+            struct sembuf sb={0,-1,0};
+            semop(semid,&sb,1);
+        }
+
+        void sem_signal(int semid){
+            struct sembuf sb={0,1,0};
+            semop(semid,&sb,1);
+        }
+
+        int main() {
+            key_t key=1234;
+            int semid=semget(key,1,0666 | IPC_CREAT);
+            semctl(semid,0,SETVAL,1);
+
+            pid_t pid=fork();
+
+            for(int i=0;i<2;i++){
+                if(pid == 0 && i==1) continue;
+                if(pid > 0 && i==0) continue;
+
+                sem_wait(semid);
+                printf("Process %d accessing the file\n",getpid());
+                sleep(2);
+                printf("process %d is done\n",getpid());
+                sem_signal(semid);
+            }
+            if(pid > 0){
+                wait(NULL);
+                semctl(semid,0,IPC_RMID);
+            }
+            return 0;
+        }
+
+
+        Code with comment explanation:
+            #include <stdio.h>         // For printf, etc.
+            #include <stdlib.h>        // For exit()
+            #include <unistd.h>        // For fork(), getpid(), sleep()
+            #include <sys/ipc.h>       // For IPC key
+            #include <sys/sem.h>       // For semaphores
+            #include <sys/types.h>     // For pid_t
+
+            // Custom 'wait' function to perform P (lock) operation on semaphore
+            void wait(int semid) {
+                struct sembuf sb = {0, -1, 0};
+                // sb.sem_num = 0 (we have only 1 semaphore)
+                // sb.sem_op  = -1 (decrement → "lock" the resource)
+                // sb.sem_flg = 0 (default behavior)
+                semop(semid, &sb, 1);  // Perform the operation on the semaphore
+            }
+
+            // Custom 'signal' function to perform V (unlock) operation on semaphore
+            void signal(int semid) {
+                struct sembuf sb = {0, 1, 0};
+                // sb.sem_op = +1 (increment → "unlock" the resource)
+                semop(semid, &sb, 1);
+            }
+
+            int main() {
+                key_t key = 1234;  // IPC key for semaphore
+                int semid = semget(key, 1, 0666 | IPC_CREAT);
+                // semget creates (or accesses) a semaphore set with 1 semaphore
+                // 0666 = read/write permissions for all users
+                // IPC_CREAT = create if it doesn't exist
+
+                semctl(semid, 0, SETVAL, 1);
+                // Initialize the semaphore value to 1 (unlocked, available)
+
+                pid_t pid = fork();  // Create a child process
+
+                // Loop twice; each process runs once
+                for (int i = 0; i < 2; i++) {
+                    if (pid == 0 && i == 1) continue;  // child runs only at i = 0
+                    if (pid > 0 && i == 0) continue;  // parent runs only at i = 1
+
+                    wait(semid);  // 🔒 LOCK the semaphore (P operation)
+                    printf("Process %d is accessing the file...\n", getpid());
+                    sleep(2);     // Simulate file access (critical section)
+                    printf("Process %d done.\n", getpid());
+                    signal(semid);  // 🔓 UNLOCK the semaphore (V operation)
+                }
+
+                if (pid > 0) {
+                    wait(NULL);              // Parent waits for child to finish
+                    semctl(semid, 0, IPC_RMID);  // Cleanup: remove the semaphore
+                }
+
+                return 0;
+            }

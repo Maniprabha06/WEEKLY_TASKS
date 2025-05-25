@@ -1,0 +1,89 @@
+Sockets:
+    - its like a virtual plu that connects two computers or two programs talk to each other over a netwrok
+    - It enables communication between processes, whether:
+            - On the same machine (local IPC).
+            - On different machines (over a network).
+    - int sockfd = socket(domain, type, protocol);
+    SOCK_STREAM ->TCP , SOCK_DGRAM ->UDP
+    - A socket is a software endpoint that allows two programs to send and receive data
+
+    - Like a phone line between two processes (on the same or different computers).
+    - Used for two-way communication.
+    - Often used in chat apps, web servers, file transfers, etc.
+
+
+    - nano server.c
+    
+    server.c:
+        #include <stdio.h>
+        #include <unistd.h>
+        #include <string.h>
+        #include <arpa/inet.h>
+
+        int main(){
+            int server_fd=socket(AF_INET,SOCK_STREAM,0);
+            struct sockaddr_in server = {
+                .sin_family=AF_INET,
+                .sin_port=htons(8080),
+                .sin_addr.s_addr=IFADDR_ANY
+            };
+            bind(server_fd,(void *)&server,sizeof(server));
+            listen(server_fd,1);
+
+            int client_fd=accept(server_fd,NULL,NULL);
+            
+            char buffer[100];
+            read(client_fd,buffer,sizeof(buffer));
+            printf("client : %s\n",buffer);
+
+            send(client_fd,"Hi from server!",16,0);
+            close(server_fd);
+            close(client_fd);
+            return 0;
+        }
+
+        - nano client.c
+        client.c:
+            #include <stdio.h>
+            #include <unistd.h>
+            #include <string.h>
+            #include <arpa/inet.h>
+
+            int main(){
+                int sock=socket(AF_INET,SOCK_STREAM,0);
+
+                struct sockaddr_in server = {
+                    .sin_family=AF_INET,
+                    .sin_port=htons(8080),
+                    .sin_addr.s_addr=inet_addr("127.0.0.1")
+                };
+
+                connet(sock,(void *)&server,sizeof(server));
+
+                send(sock,"Hi from client!",16,0);
+                char buffer[100];
+                read(sock,buffer,sizeof(buffer));
+                printf("server : %s\n",buffer);
+                close(sock);
+                return 0;
+            }
+
+            - gcc server.c -o server
+            - gcc client.c -o client
+            - ./server
+            -./client
+
+
+
+        Server Side:
+            socket() → create socket
+            bind() → bind to IP & port
+            listen() → wait for connection
+            accept() → accept a client
+            read() / write() → communicate
+
+        Client Side:
+            socket() → create socket
+            connect() → connect to server
+            read() / write() → communicate
+
