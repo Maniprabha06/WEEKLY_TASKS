@@ -23,4 +23,13 @@
 
 ![Screenshot from 2025-05-24 18-12-00](https://github.com/user-attachments/assets/99ccfeb3-5732-4437-91ab-6544231ed52c)
 
+4. MESSAGE QUEUE:
+
+![Screenshot from 2025-05-25 11-47-24](https://github.com/user-attachments/assets/995e00b6-1661-4e30-8809-5266f08ac4b5)
+
+![Screenshot from 2025-05-25 11-48-25](https://github.com/user-attachments/assets/7af2b279-0d4c-4d8d-92b0-8078add9f2f8)
+
+![Screenshot from 2025-05-25 11-49-27](https://github.com/user-attachments/assets/82fd5c67-915f-460f-9c3c-40c01ae51aa0)
+
+
 
