@@ -39,6 +39,16 @@
 
 ![Screenshot from 2025-05-25 15-50-12](https://github.com/user-attachments/assets/b9f56e4e-28cf-49e4-90cd-3394d265a172)
 
+6.SOCKETS:
+
+![Screenshot from 2025-05-25 22-16-55](https://github.com/user-attachments/assets/cd5cb1ad-de3b-4d87-a7ef-782db556fa85)
+
+![Screenshot from 2025-05-25 22-17-05](https://github.com/user-attachments/assets/b57b4980-aaaa-4cc1-a4ae-dc382d933a70)
+
+![Screenshot from 2025-05-25 22-17-26](https://github.com/user-attachments/assets/641f1967-12ea-48cb-a702-771f3699c09b)
+
+![Screenshot from 2025-05-25 22-17-41](https://github.com/user-attachments/assets/423e59f7-9318-49d9-8076-15620c1b236d)
+
 
 
 
