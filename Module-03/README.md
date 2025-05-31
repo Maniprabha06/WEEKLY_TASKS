@@ -29,3 +29,16 @@
 
 ![Screenshot from 2025-05-31 21-13-52](https://github.com/user-attachments/assets/c3803337-1d6a-4f07-830f-65711dc2cfd2)
 
+4.cat, tail and head : log files Preview and Examination
+
+![Screenshot from 2025-05-31 23-09-46](https://github.com/user-attachments/assets/23903d32-e10b-463b-8797-65da51dab71a)
+
+![Screenshot from 2025-05-31 23-09-55](https://github.com/user-attachments/assets/15335b31-a7d1-4383-b697-8effb5385f96)
+
+![Screenshot from 2025-05-31 23-10-03](https://github.com/user-attachments/assets/ad4a29db-b422-4629-b18b-206f5ab73784)
+
+![Screenshot from 2025-05-31 23-10-11](https://github.com/user-attachments/assets/2c177c72-a206-436e-bc5e-093078404c1a)
+
+![Screenshot from 2025-05-31 23-10-37](https://github.com/user-attachments/assets/0f509c6a-70f4-4c9a-a799-8e1cc575cc89)
+
+
