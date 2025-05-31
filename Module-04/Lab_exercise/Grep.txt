@@ -1,0 +1,53 @@
+Grep : Finding specific errors
+    - Used to find text pattern in files.
+    - g/re/p -> means global search of regular expression and print.
+    - A text detective
+    - Syntax : grep "pattern" filename
+
+    - Generate a large log file(access.log) using a script or a log generator tool that contains various status codes, including 500 errors.
+        Code:
+        # Create a new file or overwrite if it exists
+        > access.log
+
+        for i in {1..50}; do
+            echo "127.0.0.1 - - [$(date)] \"GET /index.html HTTP/1.1\" 200 OK" >> access.log
+            echo "127.0.0.1 - - [$(date)] \"GET /notfound.html HTTP/1.1\" 404 Not Found" >> access.log
+            echo "127.0.0.1 - - [$(date)] \"GET /error.html HTTP/1.1\" 500 Internal Server Error" >> access.log
+            echo "System error occurred while processing request" >> access.log
+            echo "Operation Completed Successfully" >> access.log
+        done
+
+    - Use grep to extract all lines with "500".
+        - grep "500" access.log 
+        # find all lines containing 500
+
+    - Use grep with context options (-A, -B, -C) to see surrounding lines.
+        - grep -A 2 "500" access.log
+        # show 2 lines after each match
+
+        - grep -B 2 "500" access.log
+        # show 2 lines before each match
+
+        - grep -C 1 "500" access.log
+        # show 1 line before and after each match
+
+    - Use grep with regular expressions (-E) to find lines with specific error patterns.
+        - grep -E "HTTP/1.1\" [45][0-9]{2}" access.log
+        # shows matched lines     
+        - grep -E "404|500" acess.log
+        # shows the matched pattern 404 and 500
+
+    
+    - find all lines that contain the word error, but do not contain the word successful.
+        - grep "error" access.log | grep -v "successful"
+
+
+Grep commands:
+-i  #case-insensitive search     
+- grep -i "error" access.log
+-n #show line numbers
+- grep -n "500" access.log //2:127.0.0.1--...
+-v #invert the search
+- grep -v "500" access.log //show all lines except 500
+-E #use extended regular expressions
+- grep -E "500|404" access.log //show lines with 500 or 404

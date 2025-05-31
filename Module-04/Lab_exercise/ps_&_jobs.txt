@@ -1,0 +1,36 @@
+Ps and Jobs : Monitoring the process:
+    - We can monitor the process using tools like ps,jobs,top.
+    
+    
+    - Start a long-running process in the background (e.g., find / -name "*.txt" > /dev/null &).
+        - find / -name "*.txt" > /dev/null &
+        # it will find for txt files in root directory
+        # > /dev/null -> it will discard the output in the screen.
+        # & ->  runs in the background
+        - yes > /dev/null &
+        # it will print yes in the screen indefinitely
+        # by using > /dev/null it discards the output.
+        # & -> will runs the process in background.
+
+
+    - Use ps aux to list all running processes and identify the CPU-intensive one.
+        - ps aux | grep yes
+        # ps -> process status aux ->combination of options
+        # aux -> a=> shows processes from all users.
+        # u -> show the user who owns each process.
+        # x -> includes process not attached to a terminal
+        # pipe (|) -> takes the output of the left and sends it as input to the right.
+        # grep -> searches for line that as "yes"
+
+    - Use jobs to list background jobs.
+        - jobs 
+        # shows the list of background processes running and terminated.
+
+    - Use kill to terminate the process.
+        - kill PID 
+        # which will be got from output of yes > /dev/null &
+
+    - use top or htop to monitor the running process in real time.
+        - top 
+        - sudo apt install htop
+        # using both we can monitor the running processes in real time.

@@ -1,0 +1,35 @@
+ls,pwd and touch - File System Navigation:
+    - Scenario: You need to locate recently modified log files and create a new empty log for testing.
+
+    - Create a directory with various log files.
+        - mkdir logfiles
+        - cd logfiles
+        - touch access.log debug.log error.log
+
+	- Use ls -lt to list files by modification time.
+        - ls -lt  
+        # list the files in current working directory 
+        # l -> long listing
+        # t -> sort by modification time
+
+	- Use pwd to display the current directory.
+        - pwd
+        # shows path of current working directory.
+
+	- Use touch to create a new empty file.
+        - touch empty.log
+        # creates file with name "emoty.log".
+
+	- Use find to find all files modified in the past hour.
+        - find . -type f -mmin -60
+        # find . -> search for files in current working directory.
+        # -type f -> search for only files.
+        # -mmin -60 -> list all files modified within past 60 mins.
+
+	- Use du to find the size of files and directories.
+        - du -sh *
+        # shows sizes of files 
+        # du -> Disk usage
+        # -s -> summary (don't list every file details).
+        # -h -> Human-readable(KB,MB,etc)
+        # * -> For each file/folder in current directory.

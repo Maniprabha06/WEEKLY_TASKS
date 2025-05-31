@@ -1,0 +1,32 @@
+cat, tail/head : log file Preview and Examination
+    - Scenario: You need to quickly preview the beginning and end of a large log file.
+
+    - Use cat to display the entire content of a small log file.
+        - cd logfiles
+        for i in {1..30}; do    
+            echo "127.0.0.1 - - [$(date)] \"GET /page$i.html HTTP /1.1\" 200 OK" >> error.log
+        done
+        - cat error.log
+        # shows all 30 lines (entire file content)
+
+    - Use head to display the first 10 lines of a large log file.
+        - head error.log
+        # shows first 10 lines of error.log file
+
+    - Use tail -f to monitor the log file in real-time as new lines are added.
+        - tail error.log
+        # shows last 10 lines of error.log file and continues to monitor for new lines
+        - tail -f error.log
+        # waits for new line to be added
+        # open another terminal
+        - echo "127.0.0.1 - - [$(date)] "GET /new-page.html HTTP/1.1\" 200 OK" >> error.log
+        # this line will be added and shown in first terminal
+
+    - Use tail -n 50 to print the last 50 lines of the file.
+        - tail -n 50 error.log
+        # shows last 50 lines of error.log file (if it has only 30 lines it shows those 30 lines alone).
+
+    - Use less and it's features to examine large log files
+        - less error.log
+        # shows the file content and allows you to navigate through it using various commands (like scroll up /down , search for a word)
+        
