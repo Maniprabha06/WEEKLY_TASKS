@@ -24,3 +24,8 @@
 ![Screenshot from 2025-05-31 18-32-46](https://github.com/user-attachments/assets/b6e8a976-b0c1-4155-a68c-95caeabe6a29)
 
 ![Screenshot from 2025-05-31 18-33-05](https://github.com/user-attachments/assets/c292001a-4ef0-4237-af8f-f38691f4e8fa)
+
+3. ls, pwd and touch : File system Navigation
+
+![Screenshot from 2025-05-31 21-13-52](https://github.com/user-attachments/assets/c3803337-1d6a-4f07-830f-65711dc2cfd2)
+
