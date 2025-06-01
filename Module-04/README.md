@@ -41,4 +41,17 @@
 
 ![Screenshot from 2025-05-31 23-10-37](https://github.com/user-attachments/assets/0f509c6a-70f4-4c9a-a799-8e1cc575cc89)
 
+5. sed - Log files Data Transformation
+
+![Screenshot from 2025-06-01 15-04-42](https://github.com/user-attachments/assets/64071379-5232-474d-9b45-c2e8c52d8b21)
+
+![Screenshot from 2025-06-01 15-04-52](https://github.com/user-attachments/assets/6d42e345-931e-45e0-a3ce-591a0bf30fb8)
+
+![Screenshot from 2025-06-01 15-05-01](https://github.com/user-attachments/assets/10fe62fe-bb36-4041-91ae-a47bce5d65ca)
+
+![Screenshot from 2025-06-01 15-05-09](https://github.com/user-attachments/assets/1c4801e0-ee8b-4955-aa82-c25d32bb2d34)
+
+![Screenshot from 2025-06-01 15-05-19](https://github.com/user-attachments/assets/78d29c6f-7077-4d0a-829c-2904bfdf179c)
+
+![Screenshot from 2025-06-01 15-05-38](https://github.com/user-attachments/assets/982bc29b-1dc2-47c3-a210-d9a66c12e051)
 
