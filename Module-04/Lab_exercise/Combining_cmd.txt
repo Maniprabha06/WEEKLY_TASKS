@@ -1,0 +1,29 @@
+Combining Commands (Pipes and Redirection):
+    - Scenario: You need to find all error messages in a log file and save them to a separate file.
+
+    - Use grep to find all error messages in a log file.
+        - grep "error" debug.log
+
+    - Use > to redirect the output of grep to a new file.
+        - grep "error" debug.log > errors_only.logs
+
+    - Use pipes (|) to combine grep and sort to find and sort error messages.
+        - grep "error" debug.log | sort
+
+    - Use pipes and uniq -c to find the number of times each error message appears.
+        - grep "error" debug.log | sort | uniq -c
+
+    - Create a shell script that performs automated log analysis.
+        - nano analyze_logs.sh
+
+        analyze_logs.sh:
+        #!/bin/bash
+        grep "error" debug.log > errors_only.log
+        grep "error" debug.log | sort | uniq -c > error_summary.txt
+
+        echo "Error messages saved to errors_only.log"
+        echo "Error summary saved to error_summary.txt"
+
+        - chmod +x analyze_logs.sh
+        - ./analyze_logs.sh
+
