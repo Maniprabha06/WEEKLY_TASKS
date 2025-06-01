@@ -1,0 +1,33 @@
+Sed - Log File Data Transformation:
+    - Scenario: You need to extract specific data from a log file and format it for analysis.
+
+        for i in {1..10}; do
+            echo "127.0.0.1 - - [$(date)] \"GET /page$i.html HTTP/1.1\" 200 OK" >> debug.log
+            echo "192.168.0.$i - - [$(date)] \"GET /error.html HTTP/1.1\" 500 Internal Server Error" >> debug.log
+        done
+
+    - Use sed to replace a specific string in a log file.
+        # sed 's/old_string/new_string/g' log_file.txt
+        - sed 's/500/ERROR/g' debug.log
+        # g-> globally in each lines.
+
+    - Use sed with regular expressions to extract IP addresses from a log file.
+        - sed -n 's/^\([0-9.]*\).*/\1/p' debug.log
+        # -n: don’t print anything by default
+        # s/.../.../p: substitute and print only the match
+        # \([0-9.]*\): captures the IP address at the beginning of the line
+
+    - Use sed to delete specific lines from a log file based on a pattern.
+        - sed '/pattern/d' debug.log
+        - sed '/200/d' debug.log
+        # /pattern/d = delete lines that match the pattern
+
+    - Use sed to reformat the log data to be comma seperated.
+        - sed -E 's/^([0-9.]+).*?\[([^]]+)\] *"GET ([^ ]+) HTTP[^"]*" ([0-9]{3}) .*/\1,\2,\3,\4/' debug.log
+
+
+    - Use awk to perform same tasks, and compare the syntax and results.
+        - awk '{gsub("500", "ERROR"); print}' access.log
+        - awk '{print $1}' access.log
+        
+        - awk '{gsub(/\[/,""); gsub(/\]/,""); print $1","$4","$7","$9}' access.log
