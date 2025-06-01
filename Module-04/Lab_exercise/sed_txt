@@ -29,5 +29,7 @@ Sed - Log File Data Transformation:
     - Use awk to perform same tasks, and compare the syntax and results.
         - awk '{gsub("500", "ERROR"); print}' access.log
         - awk '{print $1}' access.log
-        
-        - awk '{gsub(/\[/,""); gsub(/\]/,""); print $1","$4","$7","$9}' access.log
+        - awk '{for (i=1; i<=NF; i++) if ($i ~ /^[0-9]{3}$/ && $i != 200) {print; break}}' debug.log
+        - awk '{gsub(/\[/,"",$4); gsub(/]/,"",$5); gsub(/"/,"",$6); print $1","$4" "$5","$7","$9}' debug.log
+        - awk '{gsub(/\[/,"",$4); gsub(/]/,"",$5); gsub(/"/,"",$6); print $1","$4" "$5","$7","$9}' debug.log > formatted.csv
+
