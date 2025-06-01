@@ -55,3 +55,12 @@
 
 ![Screenshot from 2025-06-01 15-05-38](https://github.com/user-attachments/assets/982bc29b-1dc2-47c3-a210-d9a66c12e051)
 
+6. Combining commands : pipes and redirect
+
+![Screenshot from 2025-06-01 18-44-20](https://github.com/user-attachments/assets/2cbba694-24a3-4a64-a3b1-d092a4922b26)
+
+![Screenshot from 2025-06-01 18-45-21](https://github.com/user-attachments/assets/d02f7562-e79d-4835-b084-0c8b4b4c588f)
+
+![Screenshot from 2025-06-01 18-45-29](https://github.com/user-attachments/assets/ffabd37e-b2b2-4c31-9807-8260fd455991)
+
+
